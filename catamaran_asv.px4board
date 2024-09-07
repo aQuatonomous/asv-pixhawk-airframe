@@ -1,0 +1,80 @@
+# Catamaran X-class ASV Configuration
+#
+# This configuration is for a catamaran boat with two thrusters,
+# each capable of azimuth control via stepper motors.
+
+[airframe]
+name = Catamaran X-class ASV
+
+[actuators]
+# Main thruster outputs
+output_1 = thrust_left
+output_2 = thrust_right
+
+# Azimuth control outputs (for stepper motors)
+output_3 = azimuth_left
+output_4 = azimuth_right
+
+[control_allocator]
+type = multirotor
+
+[mixer]
+# Mixing for thrusters
+thrust_left = throttle + yaw
+thrust_right = throttle - yaw
+
+# Mixing for azimuth control
+azimuth_left = roll + yaw
+azimuth_right = -roll + yaw
+
+[pwm]
+# PWM configuration for main thrusters
+pwm_disarmed_1 = 1500
+pwm_min_1 = 1100
+pwm_max_1 = 1900
+
+pwm_disarmed_2 = 1500
+pwm_min_2 = 1100
+pwm_max_2 = 1900
+
+# PWM configuration for azimuth control (adjust based on your stepper motor requirements)
+pwm_disarmed_3 = 1500
+pwm_min_3 = 1000
+pwm_max_3 = 2000
+
+pwm_disarmed_4 = 1500
+pwm_min_4 = 1000
+pwm_max_4 = 2000
+
+[params]
+# Adjust these parameters based on your specific boat characteristics
+MC_ROLLRATE_P = 0.3
+MC_ROLLRATE_I = 0.05
+MC_ROLLRATE_D = 0.003
+MC_PITCH_P = 6
+MC_PITCHRATE_P = 0.3
+MC_PITCHRATE_I = 0.05
+MC_PITCHRATE_D = 0.003
+MC_YAW_P = 4
+MC_YAWRATE_P = 0.3
+MC_YAWRATE_I = 0.1
+MC_YAWRATE_D = 0
+
+# Thruster configuration
+THR_MDL_FAC = 0.3
+
+# Boat-specific parameters
+GND_L1_PERIOD = 5
+GND_L1_DAMPING = 0.75
+GND_SP_CTRL_MODE = 1
+GND_SPEED_P = 0.1
+GND_SPEED_I = 0
+GND_SPEED_D = 0
+GND_SPEED_IMAX = 1
+GND_SPEED_THR_SC = 1
+GND_THR_IDLE = 0
+GND_THR_CRUISE = 0.3
+GND_THR_MAX = 1
+GND_THR_MIN = 0
+GND_SPEED_TRIM = 1.5
+GND_THR_MIN_SCALE = 0
